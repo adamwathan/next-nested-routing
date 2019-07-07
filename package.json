@@ -1,0 +1,24 @@
+{
+  "name": "next-nested-routing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "next.config.js",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "autoprefixer": "^9.6.1",
+    "babel-plugin-root-import": "^6.2.0",
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "tailwindcss": "^1.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
