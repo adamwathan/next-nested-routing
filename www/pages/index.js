@@ -2,6 +2,7 @@ import Layout from '~/components/Layout'
 import Link from 'next/link'
 import Router from 'next/router'
 import { withRouter } from 'next/router'
+import fetch from 'isomorphic-unfetch'
 
 function Modal({ children }) {
   return (
