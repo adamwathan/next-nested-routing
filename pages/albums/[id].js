@@ -33,7 +33,7 @@ function Show({ album }) {
 }
 
 Show.getInitialProps = async ({ req, query }) => {
-  const protocol = req.headers['x-forwarded-proto']
+  const protocol = req.headers['x-forwarded-proto'] || 'http'
   const host = req.headers['x-forwarded-host'] || req.headers.host
   const baseUrl = `${protocol}://${host}/api`
   const albums = await fetch(`${baseUrl}/albums`).then(r => r.json())

@@ -3,25 +3,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "www/package.json",
+      "src": "next.config.js",
       "use": "@now/next"
-    },
-    {
-      "src": "api/*.js",
-      "use": "@now/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/www/$1",
-      "headers": {
-        "x-request-path": "$1"
-      }
     }
   ]
 }

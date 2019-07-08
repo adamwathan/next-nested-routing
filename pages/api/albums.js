@@ -443,5 +443,5 @@ const albums = [
 ]
 
 module.exports = (req, res) => {
-  res.send(JSON.stringify(albums))
+  res.json(albums)
 }

@@ -53,7 +53,7 @@ const Index = withRouter(({ router, albums }) => {
           {
             albums.map(album => (
               <div key={album.id} className="w-1/3 px-2 mt-4">
-                <Link href={`/?showAlbum=${album.id}`} as={`/albums/show?id=${album.id}`} scroll={false} shallow>
+                <Link href={`/?showAlbum=${album.id}`} as={`/albums/${album.id}`} scroll={false} shallow>
                   <a>
                     <img src={`/static${album.artwork}`} alt={`${album.artist} - ${album.title}`}/>
                   </a>
@@ -72,7 +72,7 @@ const Index = withRouter(({ router, albums }) => {
 
 Index.getInitialProps = async ({ req, query }) => {
   function getBaseUrl(req) {
-    const protocol = req.headers['x-forwarded-proto']
+    const protocol = req.headers['x-forwarded-proto'] || 'http'
     const host = req.headers['x-forwarded-host'] || req.headers.host
     return `${protocol}://${host}/api`
   }
