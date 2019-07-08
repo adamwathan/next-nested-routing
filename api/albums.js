@@ -1,4 +1,4 @@
-[
+const albums = [
   {
     "id": 1,
     "artist": "Death",
@@ -441,3 +441,7 @@
     ]
   }
 ]
+
+module.exports = (req, res) => {
+  res.send(JSON.stringify(albums))
+}

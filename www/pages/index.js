@@ -1,12 +1,12 @@
 import Layout from '~/components/Layout'
 import Link from 'next/link'
+import Router from 'next/router'
 import { withRouter } from 'next/router'
-import { useState, useEffect } from 'react'
 
 function Modal({ children }) {
   return (
     <div className="fixed inset-0 flex items-center justify-center">
-      <div className="absolute inset-0 bg-black opacity-25"></div>
+      <div className="absolute inset-0 bg-black opacity-25" onClick={() => Router.back()}></div>
       <div className="relative w-full max-w-2xl bg-white p-8">
         { children }
       </div>
@@ -43,17 +43,7 @@ function AlbumModal({ album }) {
   )
 }
 
-export default withRouter(({ router }) => {
-  const [albums, setAlbums] = useState([])
-
-  useEffect(() => {
-    (async () => {
-      setAlbums(await fetch('/static/albums.json').then(r => r.json()))
-    })()
-  }, [])
-
-  console.log(albums)
-
+const Index = withRouter(({ router, albums }) => {
   return (
     <Layout>
       <div className="p-8">
@@ -78,3 +68,20 @@ export default withRouter(({ router }) => {
     </Layout>
   )
 })
+
+Index.getInitialProps = async ({ req, query }) => {
+  function getBaseUrl(req) {
+    const protocol = req.headers['x-forwarded-proto']
+    const host = req.headers['x-forwarded-host'] || req.headers.host
+    return `${protocol}://${host}/api`
+  }
+
+  const baseUrl = req ? getBaseUrl(req) : '/api'
+  const albums = await fetch(`${baseUrl}/albums`).then(r => r.json())
+
+  return {
+    albums,
+  }
+}
+
+export default Index
