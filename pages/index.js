@@ -45,6 +45,7 @@ function AlbumModal({ album }) {
 }
 
 const Index = withRouter(({ router, albums }) => {
+
   return (
     <Layout>
       <div className="p-8">

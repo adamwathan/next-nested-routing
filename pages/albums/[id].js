@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Layout from '~/components/Layout'
 import fetch from 'isomorphic-unfetch'
 
@@ -5,7 +6,10 @@ function Show({ album }) {
   return (
     <Layout>
       <div className="p-8">
-        <div className="flex -mx-4">
+        <Link href="/">
+          <a className="text-gray-600">&larr; Home</a>
+        </Link>
+        <div className="mt-4 flex -mx-4">
           <div className="w-1/2 px-4">
             <div className="text-2xl font-bold leading-none">{album.title}</div>
             <div className="mt-2 text-sm font-bold leading-none uppercase tracking-wide text-gray-600">
@@ -33,9 +37,13 @@ function Show({ album }) {
 }
 
 Show.getInitialProps = async ({ req, query }) => {
-  const protocol = req.headers['x-forwarded-proto'] || 'http'
-  const host = req.headers['x-forwarded-host'] || req.headers.host
-  const baseUrl = `${protocol}://${host}/api`
+  function getBaseUrl(req) {
+    const protocol = req.headers['x-forwarded-proto'] || 'http'
+    const host = req.headers['x-forwarded-host'] || req.headers.host
+    return `${protocol}://${host}/api`
+  }
+
+  const baseUrl = req ? getBaseUrl(req) : '/api'
   const albums = await fetch(`${baseUrl}/albums`).then(r => r.json())
 
   return {
