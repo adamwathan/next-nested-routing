@@ -6,5 +6,8 @@
       "src": "next.config.js",
       "use": "@now/next"
     }
-  ]
+  ],
+  "env": {
+    "TEST_VAR": "nowjson"
+  }
 }

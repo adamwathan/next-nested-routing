@@ -28,7 +28,7 @@ function Show({ album }) {
             </ol>
           </div>
           <div className="w-1/2 px-4">
-            <img src={`/static${album.artwork}`} alt={`${album.artist} - ${album.title}`} />
+            <img src={`/static${album.artwork_url}`} alt={`${album.artist} - ${album.title}`} />
           </div>
         </div>
       </div>

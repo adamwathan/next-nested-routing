@@ -37,7 +37,7 @@ function AlbumModal({ album }) {
           </ol>
         </div>
         <div className="w-1/2 px-4">
-          <img src={`/static${album.artwork}`} alt={`${album.artist} - ${album.title}`} />
+          <img src={`/static${album.artwork_url}`} alt={`${album.artist} - ${album.title}`} />
         </div>
       </div>
     </Modal>
@@ -56,7 +56,7 @@ const Index = withRouter(({ router, albums }) => {
               <div key={album.id} className="w-1/3 px-2 mt-4">
                 <Link href={`/?showAlbum=${album.id}`} as={`/albums/${album.id}`} scroll={false} shallow>
                   <a>
-                    <img src={`/static${album.artwork}`} alt={`${album.artist} - ${album.title}`}/>
+                    <img src={`/static${album.artwork_url}`} alt={`${album.artist} - ${album.title}`}/>
                   </a>
                 </Link>
               </div>
